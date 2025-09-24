@@ -1,0 +1,27 @@
+services:
+  vault:
+    hostname: vault
+    container_name: vault
+    image: hashicorp/vault:latest
+    environment:
+      VAULT_ADDR: http://0.0.0.0:8200
+      VAULT_API_ADDR: http://0.0.0.0:8200
+      VAULT_DEV_ROOT_TOKEN_ID: "v3rysecr3t"
+    ports:
+      - 8200:8200
+    volumes:
+      - ./volumes/vault/file:/vault/file:rw
+      - ./config/config.json:/vault/config/config.json:ro
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -dev -dev-listen-address="0.0.0.0:8200" -dev-root-token-id="root"
+  vault-init:
+    container_name: vault-init
+    image: vault:1.13.3
+    volumes:
+      - ./vault-init.sh:/vault-init.sh
+      - ./config/myapp-policy.hcl:/myapp-policy.hcl
+    depends_on:
+      - vault
+    restart: "no"
+    entrypoint: sh -c "/vault-init.sh"

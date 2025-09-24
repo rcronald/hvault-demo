@@ -1,0 +1,64 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Secret</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background-color: #f4f4f9;
+            color: #4A154B; /* Tonalidad morado */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+        }
+        img {
+            width: 220px;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #000000;
+        }
+        .secret {
+            font-size: 18px;
+            text-align: left;
+        }
+        .secret p {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            background: #f8f8ff;
+        }
+        .secret strong {
+            color: #000000; /* Black */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://sue.eu/wp-content/uploads/sites/6/2022/06/vault-hashicorp-logo-920x920-sue-v6.png" alt="Vault Logo">
+        <h1>Secretos desde Vault</h1>
+        <div class="secret">
+            <p><strong>Usuario:</strong> {{ username }}</p>
+            <p><strong>Contraseña:</strong> {{ password }}</p>
+        </div>
+    </div>
+</body>
+</html>
